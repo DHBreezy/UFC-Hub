@@ -20,7 +20,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - uses: android-actions/setup-android@v3
+      - run: yes | sdkmanager --licenses > /dev/null || true
       - run: npm install
       - run: npx cap add android
       - run: npx capacitor-assets generate --android
