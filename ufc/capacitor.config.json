@@ -1,0 +1,8 @@
+{
+  "appId": "com.ufchub.app",
+  "appName": "UFC Hub",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": true
+  }
+}

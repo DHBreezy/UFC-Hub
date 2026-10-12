@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>UFC Hub — News, Events, Fighters &amp; Videos</title>
+<meta name="description" content="Phone-friendly UFC hub: live news and fan talk, past and upcoming events, fighter stats, rankings and videos.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon.png">
+<style>
+  :root { --bg:#0b0b0e; --card:#15151c; --card2:#1d1d26; --line:#2a2a36; --txt:#f5f5f7; --dim:#a7a7b3; --red:#e10600; --red2:#ff3b30; --gold:#f5c518; --green:#2ecc71; --grey:#888; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { color-scheme:dark; }
+  body { margin:0; background:var(--bg); color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif; text-align:left; padding-bottom:calc(76px + env(safe-area-inset-bottom)); }
+  a { color:inherit; }
+  .topbar { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:12px 16px calc(10px); background:rgba(11,11,14,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px; }
+  .ufcMark { background:var(--red); color:#fff; font-weight:900; letter-spacing:1px; border-radius:6px; display:inline-block; line-height:1; }
+  .ufcMark--sm { font-size:12px; padding:4px 8px; }
+  .ufcMark--md { font-size:15px; padding:12px 20px; letter-spacing:2px; border-radius:14px; box-shadow:0 0 24px rgba(225,6,0,.45); }
+  .ufcMark--lg { font-size:22px; padding:18px 30px; letter-spacing:2px; border-radius:20px; box-shadow:0 0 24px rgba(225,6,0,.45); }
+  .belt { background:var(--red); color:#fff; font-size:12px; font-weight:900; padding:4px 8px; border-radius:6px; letter-spacing:1px; display:inline-block; line-height:1; }
+  .brandName { font-size:18px; }
+  .brandName small { display:block; font-size:11px; color:var(--dim); font-weight:500; letter-spacing:.3px; }
+  .iconBtn { background:var(--card2); border:1px solid var(--line); color:var(--txt); border-radius:10px; padding:9px 12px; font-size:14px; }
+  #bellBtn { position:relative; }
+  #bellBadge { position:absolute; top:-7px; right:-7px; background:var(--red); color:#fff; font-size:10px; font-weight:800; min-width:19px; height:19px; line-height:19px; text-align:center; border-radius:99px; padding:0 5px; }
+  .alItem { display:flex; gap:10px; width:100%; text-align:left; background:var(--card2); border:1px solid var(--line); color:var(--txt); border-radius:12px; padding:11px 12px; margin-bottom:8px; align-items:flex-start; }
+  .alIc { font-size:20px; flex:0 0 auto; }
+  .topActions { display:flex; gap:8px; }
+  .logoSpin { display:flex; justify-content:center; padding:30px 0; }
+  .rkRow { display:flex; gap:10px; align-items:center; width:100%; text-align:left; background:var(--card); border:1px solid var(--line); color:var(--txt); border-radius:12px; padding:10px 13px; margin-bottom:7px; }
+  .rkNum { flex:0 0 30px; font-weight:900; color:var(--gold); font-size:15px; }
+  .rkChamp { border-color:#5a4a08; background:linear-gradient(135deg,#241c05,#15151c); }
+  .rkCrown { font-size:18px; }
+  .spinBelt { background:var(--red); color:#fff; font-size:15px; font-weight:900; letter-spacing:2px; padding:12px 20px; border-radius:14px; display:inline-block; line-height:1; box-shadow:0 0 24px rgba(225,6,0,.45); }
+  .isSpinning { animation:logoPulse 1.15s ease-in-out infinite; }
+  @keyframes logoPulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.07); } }
+  @keyframes lspin { 0%,100% { transform:scale(1); } 50% { transform:scale(1.07); } }
+  #bootOverlay { position:fixed; inset:0; z-index:100; background:var(--bg); display:flex; flex-direction:column; gap:18px; align-items:center; justify-content:center; transition:opacity .4s; }
+  #bootOverlay.gone { opacity:0; pointer-events:none; }
+  #bootOverlay .appName { font-weight:900; letter-spacing:3px; font-size:20px; }
+  #bootOverlay .spinBelt { font-size:22px; padding:18px 30px; border-radius:20px; }
+  #bootOverlay .ufcMark--lg { font-size:22px; padding:18px 30px; border-radius:20px; }
+  #onboard { position:fixed; inset:0; z-index:90; background:rgba(0,0,0,.78); overflow-y:auto; padding:22px 14px 40px; }
+  .obBox { max-width:560px; margin:0 auto; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px 18px; }
+  .obBox h2 { margin:0 0 4px; font-size:22px; } .obBox p { color:var(--dim); font-size:13.5px; margin:4px 0 12px; line-height:1.5; }
+  .obBox input[type=text] { background:var(--card2); border:1px solid var(--line); color:var(--txt); border-radius:12px; padding:12px 14px; font-size:16px; width:100%; margin-bottom:6px; }
+  .pkRow { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 4px; }
+  .pkChip { background:var(--card2); border:1px solid var(--line); color:var(--txt); border-radius:999px; padding:9px 14px; font-size:13.5px; font-weight:600; }
+  .pkChip.on { background:var(--red); border-color:var(--red); color:#fff; }
+  .obLabel { font-size:12px; font-weight:800; letter-spacing:1px; color:var(--dim); text-transform:uppercase; margin:14px 0 2px; }
+  #editPicksBtn { background:none; border:none; color:var(--dim); font-size:12.5px; font-weight:700; }
+  .wrap { max-width:860px; margin:0 auto; padding:14px 14px 30px; }
+  .hero { background:linear-gradient(135deg,#1a0000,#3d0505 55%,#12060a); border:1px solid #5a1210; border-radius:16px; padding:18px; margin-bottom:14px; }
+  .heroKicker { color:var(--red2); font-weight:800; font-size:12px; letter-spacing:1px; }
+  .heroTitle { font-size:22px; font-weight:800; margin:6px 0; line-height:1.2; }
+  .heroMeta { color:var(--dim); font-size:13px; margin-bottom:12px; }
+  .secH { display:flex; align-items:center; justify-content:space-between; margin:18px 2px 10px; }
+  .secH h2 { font-size:15px; margin:0; letter-spacing:.6px; text-transform:uppercase; color:var(--dim); }
+  .card { display:block; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:13px 14px; margin-bottom:10px; width:100%; text-align:left; color:var(--txt); }
+  button.card { cursor:pointer; }
+  a.card.link { text-decoration:none; }
+  .cardT { font-weight:700; font-size:15px; line-height:1.35; }
+  .cardS { color:#cfcfd8; font-size:13.5px; line-height:1.5; margin-top:6px; }
+  .cardM { color:var(--dim); font-size:12px; margin-top:7px; }
+  .cardK { color:var(--red2); font-size:11px; font-weight:800; letter-spacing:1px; }
+  .thumb { width:100%; height:150px; object-fit:cover; border-radius:10px; margin-bottom:10px; background:#000; }
+  .row { display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .btn { background:var(--red); color:#fff; border:none; border-radius:10px; padding:11px 16px; font-weight:700; font-size:14px; }
+  .btn.ghost { background:transparent; border:1px solid var(--line); color:var(--txt); }
+  .btn.sm { padding:8px 12px; font-size:13px; text-decoration:none; display:inline-block; }
+  .seg, .chips, .srcRow { display:flex; gap:8px; margin-bottom:12px; overflow-x:auto; padding-bottom:2px; }
+  .segBtn, .chipBtn, .srcBtn { flex:0 0 auto; background:var(--card2); border:1px solid var(--line); color:var(--txt); border-radius:999px; padding:9px 15px; font-size:13.5px; font-weight:600; }
+  .segBtn.on, .chipBtn.on, .srcBtn.on { background:var(--red); border-color:var(--red); color:#fff; }
+  .searchBar { display:flex; gap:8px; margin-bottom:12px; }
+  .searchBar input, .fTools input, select { background:var(--card2); border:1px solid var(--line); color:var(--txt); border-radius:12px; padding:12px 14px; font-size:15px; width:100%; }
+  .fTools { display:grid; gap:8px; margin-bottom:12px; }
+  .fGrid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  @media (min-width:640px){ .fGrid { grid-template-columns:1fr 1fr 1fr; } }
+  .fcard { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:13px; color:var(--txt); text-align:left; position:relative; }
+  .fRank { color:var(--gold); font-size:11px; font-weight:800; letter-spacing:.6px; }
+  .fName { font-weight:800; font-size:15px; margin-top:3px; }
+  .fNick { color:var(--dim); font-size:12px; font-style:italic; }
+  .fMeta { font-size:12px; color:#cfcfd8; margin-top:6px; }
+  .fTag { position:absolute; top:10px; right:10px; font-size:10px; font-weight:800; letter-spacing:.6px; background:#26262f; border:1px solid var(--line); padding:3px 7px; border-radius:999px; color:var(--dim); }
+  .res { display:flex; gap:8px; align-items:baseline; padding:7px 0; border-top:1px dashed var(--line); font-size:13px; flex-wrap:wrap; }
+  .res .dim, .dim { color:var(--dim); }
+  .badge { font-weight:800; font-size:11px; padding:2px 8px; border-radius:999px; }
+  .badge.w { background:#123f22; color:#5dff9d; } .badge.l { background:#431111; color:#ff8a8a; } .badge.n { background:#33333d; color:#ccc; }
+  .statGrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:12px 0; }
+  .stat { background:var(--card2); border:1px solid var(--line); border-radius:10px; padding:9px 11px; }
+  .statK { font-size:11px; color:var(--dim); text-transform:uppercase; letter-spacing:.5px; }
+  .statV { font-weight:700; font-size:14px; margin-top:2px; }
+  .bars { margin:8px 0 4px; } .barRow { display:grid; grid-template-columns:96px 1fr 40px; gap:8px; align-items:center; font-size:12.5px; margin:6px 0; }
+  .bar { height:8px; background:#26262f; border-radius:99px; overflow:hidden; } .bar i { display:block; height:100%; background:var(--red); }
+  .nextBox { background:#101b12; border:1px solid #1f4d2a; border-radius:12px; padding:11px 12px; margin:12px 0; }
+  .hype { color:var(--gold); font-size:14px; margin:4px 0; letter-spacing:2px; }
+  .resH { font-size:12px; font-weight:800; letter-spacing:1px; color:var(--dim); text-transform:uppercase; margin:14px 2px 8px; }
+  .sk { height:14px; border-radius:6px; background:linear-gradient(90deg,#22222b,#2e2e38,#22222b); background-size:200% 100%; animation:sh 1.2s infinite; margin:6px 0; }
+  .sk.w70 { width:70%; } @keyframes sh { to { background-position:-200% 0; } }
+  .tabbar { position:fixed; left:0; right:0; bottom:0; z-index:30; display:flex; background:rgba(15,15,20,.97); border-top:1px solid var(--line); padding:8px 6px calc(8px + env(safe-area-inset-bottom)); }
+  .tabBtn { flex:1; background:none; border:none; color:var(--dim); font-size:11px; font-weight:700; padding:7px 2px; display:flex; flex-direction:column; align-items:center; gap:3px; }
+  .tabBtn .ic { font-size:19px; } .tabBtn.on { color:#fff; } .tabBtn.on .ic { filter:drop-shadow(0 0 6px rgba(225,6,0,.8)); }
+  .modalBk { position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.65); overflow-y:auto; padding:18px 12px 40px; }
+  .modalBox { max-width:620px; margin:0 auto; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px 16px; }
+  .mName { font-size:24px; font-weight:900; } .bigRec { font-size:30px; font-weight:900; color:var(--gold); margin-top:6px; }
+  .mHead { border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:6px; }
+  .xBtn { float:right; background:var(--card2); border:1px solid var(--line); color:var(--txt); border-radius:10px; padding:8px 12px; font-size:14px; }
+  .foot { color:var(--dim); font-size:12px; text-align:center; margin:22px 0 6px; line-height:1.6; }
+  .foot a { color:#cfcfd8; }
+  .wphoto { width:100%; height:190px; object-fit:cover; object-position:top; border-radius:10px; background:#26262f; display:block; }
+  .wph { width:100%; height:190px; border-radius:10px; background:linear-gradient(135deg,#2a0a0a,#4d1212); display:flex; align-items:center; justify-content:center; font-size:44px; font-weight:900; color:#ffb3ab; }
+  .wcard { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:0 0 12px; color:var(--txt); text-align:left; overflow:hidden; }
+  .wcard .wBody { padding:10px 13px 0; }
+  .gMainWrap { position:relative; background:#000; border-radius:12px; overflow:hidden; }
+  .gMain { width:100%; max-height:52vh; object-fit:contain; display:block; background:#000; }
+  .gArrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(20,20,26,.75); border:1px solid var(--line); color:#fff; font-size:20px; border-radius:10px; padding:8px 13px; }
+  .gArrow.l { left:8px; } .gArrow.r { right:8px; }
+  .gCount { position:absolute; bottom:8px; right:10px; background:rgba(0,0,0,.7); font-size:12px; padding:3px 9px; border-radius:99px; }
+  .gThumbs { display:flex; gap:8px; overflow-x:auto; margin-top:10px; padding-bottom:4px; }
+  .gThumbs img { width:64px; height:64px; object-fit:cover; border-radius:8px; border:2px solid transparent; flex:0 0 auto; }
+  .gThumbs img.on { border-color:var(--red); }
+  .credit { color:var(--dim); font-size:11px; margin-top:6px; line-height:1.5; }
+  .vFrame { position:relative; width:100%; padding-top:56.25%; background:#000; border-radius:12px; overflow:hidden; border:1px solid var(--line); }
+  .vFrame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .vcard { display:flex; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px; color:var(--txt); text-align:left; width:100%; margin-bottom:10px; align-items:center; }
+  .vthumb { position:relative; flex:0 0 150px; }
+  .vthumb img { width:150px; height:84px; object-fit:cover; border-radius:8px; display:block; background:#000; }
+  .vplay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:26px; color:#fff; text-shadow:0 1px 6px #000; }
+  .vlen { position:absolute; bottom:4px; right:4px; background:rgba(0,0,0,.8); font-size:10px; padding:1px 6px; border-radius:6px; }
+  .vTag { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.6px; padding:2px 8px; border-radius:99px; margin-bottom:4px; }
+  .vTag.full { background:#123f22; color:#5dff9d; } .vTag.hl { background:#3a2a08; color:var(--gold); } .vTag.talk { background:#26262f; color:#ccc; }
+  .vSpin { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#000; }
+  .vSpin::after { content:""; width:42px; height:42px; border-radius:50%; border:4px solid #333; border-top-color:var(--red); animation:spin 0.9s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .vErr { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#141419; text-align:center; padding:20px; font-size:14px; line-height:1.7; }
+  .vErr a { color:#fff; background:var(--red); border-radius:10px; padding:10px 16px; font-weight:700; text-decoration:none; display:inline-block; margin-top:8px; }
+  .vWatch { display:flex; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px; margin-bottom:10px; align-items:center; }
+  .vWatch img { width:150px; height:84px; object-fit:cover; border-radius:8px; flex:0 0 auto; background:#000; }
+  .vWatchBody .btn { margin-top:10px; text-decoration:none; display:inline-block; }
+</style>
+</head>
+<body>
+<div id="bootOverlay"><span class="ufcMark ufcMark--lg isSpinning">UFC</span><div class="appName">UFC HUB</div></div>
+
+<div id="onboard" hidden>
+  <div class="obBox">
+    <h2 id="obTitle">Welcome to UFC Hub 👊</h2>
+    <p>Tell us who you are and what you follow — your Home feed will lead with it, and we'll greet you by name every time.</p>
+    <div class="obLabel">Your name</div>
+    <input type="text" id="obName" maxlength="20" placeholder="e.g. James" autocomplete="off">
+    <div class="obLabel">Favourite fighters (pick any)</div>
+    <div class="pkRow" id="obFighters"></div>
+    <div class="obLabel">I want more of</div>
+    <div class="pkRow" id="obTopics"></div>
+    <div class="row"><button class="btn" id="obSave">Save my Hub</button>
+    <button class="btn ghost" id="obSkip">Skip for now</button></div>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="brand"><span class="ufcMark ufcMark--sm">UFC</span><span class="brandName">HUB<small id="brandSub">news &bull; events &bull; fighters &bull; videos</small></span></div>
+  <div class="topActions"><button class="iconBtn" id="gearBtn" title="My preferences">⚙️</button>
+  <button class="iconBtn" id="bellBtn" title="Alerts">🔔<span id="bellBadge" hidden></span></button>
+  <button class="iconBtn" id="refreshBtn" title="Refresh live data">&#8635;</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- FEED -->
+  <section class="tabPage" id="page-feed">
+    <div id="forYou" hidden>
+      <div class="secH"><h2 id="forYouH">For you</h2><button id="editPicksBtn">Edit picks</button></div>
+      <div id="forYouList"></div>
+    </div>
+    <div class="hero" id="heroCard"><div class="heroKicker">LOADING…</div><div class="heroTitle">Finding the next fight</div></div>
+    <div class="secH"><h2>Latest news &amp; releases</h2><span class="cardM" id="newsAge"></span></div>
+    <div id="newsList"></div>
+    <div class="secH"><h2>Rumor mill</h2><span class="cardM" id="rumorAge"></span></div>
+    <div class="card"><div class="cardS dim">Unconfirmed talk — returns, re-signings, callouts and gossip from MMA Fighting, BJPenn.com and LowKick MMA. Take with salt. 🧂</div></div>
+    <div id="rumorList"></div>
+    <div class="secH"><h2>Fan talk — r/MMA</h2><span class="cardM" id="socialAge"></span></div>
+    <div id="socialList"></div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="tabPage" id="page-events" hidden>
+    <div class="seg">
+      <button class="segBtn" data-mode="upcoming">Upcoming</button>
+      <button class="segBtn" data-mode="recent">Past results</button>
+    </div>
+    <div id="eventsList"></div>
+  </section>
+
+  <!-- FIGHTERS -->
+  <section class="tabPage" id="page-fighters" hidden>
+    <details class="card" id="h2hBox">
+      <summary class="cardT">⚔️ Head-to-head — pick any 2 fighters</summary>
+      <div class="fTools" style="margin-top:10px">
+        <select id="h2hA"></select>
+        <select id="h2hB"></select>
+      </div>
+      <button class="btn" id="h2hGo">Compare</button>
+      <div id="h2hOut" style="margin-top:12px"></div>
+    </details>
+    <div class="fTools">
+      <input id="fSearch" type="search" placeholder="Search fighters — e.g. Topuria, Volk, Shevchenko…" autocomplete="off">
+      <select id="fDivSel"><option value="all">All divisions</option></select>
+    </div>
+    <div class="chips">
+      <button class="chipBtn" data-st="all">All</button>
+      <button class="chipBtn" data-st="active">Active</button>
+      <button class="chipBtn" data-st="legend">Legends</button>
+    </div>
+    <div class="fGrid" id="fighterGrid"></div>
+  </section>
+
+  <!-- RANKS -->
+  <section class="tabPage" id="page-ranks" hidden>
+    <div class="card"><div class="cardS">Official UFC rankings, updated Tuesdays. Tap any name for the full profile (⭐ = in this app).</div></div>
+    <div class="chips" id="rankChips"></div>
+    <div id="rankBody"></div>
+  </section>
+
+  <!-- WOMEN -->
+  <section class="tabPage" id="page-women" hidden>
+    <div class="card"><div class="cardS"><b>Women's divisions:</b> tap a fighter for her photo gallery, stats, last + next fights. Photos are freely-licensed (Wikipedia/Wikimedia Commons).</div></div>
+    <div class="chips" id="wChips">
+      <button class="wchip on" data-wdiv="all">All</button>
+      <button class="wchip" data-wdiv="Women's Strawweight">Strawweight</button>
+      <button class="wchip" data-wdiv="Women's Flyweight">Flyweight</button>
+      <button class="wchip" data-wdiv="Women's Bantamweight">Bantamweight</button>
+      <button class="wchip" data-wdiv="legends">Legends</button>
+    </div>
+    <div class="fGrid" id="womenGrid"></div>
+  </section>
+
+  <!-- PROSPECTS -->
+  <section class="tabPage" id="page-prospects" hidden>
+    <div class="card"><div class="cardS"><b>Development watch:</b> DWCS grads, unbeaten runs and young ranked killers. Hype ★ is buzz, not gospel — tap Search to check their latest news.</div></div>
+    <div id="prospectGrid"></div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section class="tabPage" id="page-videos" hidden>
+    <div class="card"><div class="cardS"><b>Fight footage:</b> official UFC uploads only — free full fights, marathons and highlight reels. Full PPV fights live on Fight Pass / Paramount+, linked below. Tap any card to watch here.</div></div>
+    <div id="videoPlayer" hidden>
+      <div class="vFrame"><iframe id="vFrame" src="" title="UFC video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="vSpin" id="vSpin" hidden></div><div class="vErr" id="vErr" hidden><div>⚠️ This video refuses to play inside apps.<br><a id="vErrLink" target="_blank" rel="noopener" href="https://www.youtube.com/@ufc">Watch it on YouTube instead</a></div></div></div>
+      <div class="vWatch" id="vWatch" hidden>
+        <img id="vWatchThumb" src="" alt="">
+        <div class="vWatchBody"><div class="cardT" id="vWatchTitle" style="font-size:15px"></div>
+        <div class="cardM">Plays in the YouTube app / site</div>
+        <a class="btn" id="vWatchLink" target="_blank" rel="noopener" href="https://www.youtube.com/@ufc">▶ Play on YouTube</a></div>
+      </div>
+      <div class="row"><a class="btn sm" id="vYTLink" target="_blank" rel="noopener" href="https://www.youtube.com/@ufc">Watch on YouTube</a>
+      <a class="btn sm ghost" target="_blank" rel="noopener" href="https://ufcfightpass.com/">UFC Fight Pass</a></div>
+    </div>
+    <div class="chips" id="vScope">
+      <button class="vchip scopeBtn on" data-vs="latest">Latest</button>
+      <button class="vchip scopeBtn" data-vs="classics">Classics</button>
+    </div>
+    <div class="chips" id="vChips">
+      <button class="vchip on" data-vf="all">All</button>
+      <button class="vchip" data-vf="full">Full fights</button>
+      <button class="vchip" data-vf="hl">Highlights</button>
+      <button class="vchip" data-vf="talk">Interviews</button>
+    </div>
+    <div id="videoGrid"></div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="tabPage" id="page-search" hidden>
+    <div class="searchBar">
+      <input id="searchInput" type="search" placeholder="Search everything UFC…" autocomplete="off">
+      <button class="btn" id="searchBtn">Go</button>
+    </div>
+    <div class="srcRow">
+      <button class="srcBtn on" data-src="all">All</button>
+      <button class="srcBtn" data-src="fighters">Fighters</button>
+      <button class="srcBtn" data-src="web">Web</button>
+      <button class="srcBtn" data-src="media">Media</button>
+      <button class="srcBtn" data-src="social">Social</button>
+    </div>
+    <div id="searchResults"></div>
+  </section>
+
+  <div class="foot">Live bits: ESPN (schedule + news) &bull; r/MMA via Arctic Shift (social) &bull; Wikipedia (web + bios).<br>Roster snapshot Oct 2026 — ranks change fast, tap ESPN/UFC.com links to confirm.<br>Tip: <b>Add to Home Screen</b> for a full-screen app feel.</div>
+</div>
+
+<nav class="tabbar">
+  <button class="tabBtn" data-tab="feed"><span class="ic">🏠</span>Home</button>
+  <button class="tabBtn" data-tab="events"><span class="ic">📅</span>Events</button>
+  <button class="tabBtn" data-tab="fighters"><span class="ic">🥊</span>Fighters</button>
+  <button class="tabBtn" data-tab="ranks"><span class="ic">🏆</span>Ranks</button>
+  <button class="tabBtn" data-tab="women"><span class="ic">♀</span>Women</button>
+  <button class="tabBtn" data-tab="videos"><span class="ic">▶</span>Videos</button>
+  <button class="tabBtn" data-tab="prospects"><span class="ic">🌱</span>Prospects</button>
+  <button class="tabBtn" data-tab="search"><span class="ic">🔍</span>Search</button>
+</nav>
+
+<div class="modalBk" id="modal" hidden>
+  <div class="modalBox">
+    <button class="xBtn" id="modalClose">✕ Close</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script>window.root = window.root || {};</script>
+<script src="src/ufc-data.js"></script>
+<script src="src/women-data.js"></script>
+<script src="src/videos-data.js"></script>
+<script src="src/rankings-data.js"></script>
+<script src="src/fighter-photos.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>

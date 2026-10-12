@@ -1,0 +1,1092 @@
+/* UFC rankings snapshot (ufc.com, Oct 12 2026). Live scrape at runtime; fallback. */
+window.UFC_RANKINGS = {
+ "updated": "2026-10-12",
+ "divs": [
+  {
+   "div": "Men's Pound-for-Pound",
+   "champ": null,
+   "list": [
+    {
+     "rank": 1,
+     "slug": "islam-makhachev",
+     "name": "Islam Makhachev"
+    },
+    {
+     "rank": 2,
+     "slug": "alexander-volkanovski",
+     "name": "Alexander Volkanovski"
+    },
+    {
+     "rank": 3,
+     "slug": "justin-gaethje",
+     "name": "Justin Gaethje"
+    },
+    {
+     "rank": 4,
+     "slug": "petr-yan",
+     "name": "Petr Yan"
+    },
+    {
+     "rank": 5,
+     "slug": "ilia-topuria",
+     "name": "Ilia Topuria"
+    },
+    {
+     "rank": 6,
+     "slug": "joshua-van",
+     "name": "Joshua Van"
+    },
+    {
+     "rank": 7,
+     "slug": "sean-strickland",
+     "name": "Sean Strickland"
+    },
+    {
+     "rank": 8,
+     "slug": "tom-aspinall",
+     "name": "Tom Aspinall"
+    },
+    {
+     "rank": 9,
+     "slug": "merab-dvalishvili",
+     "name": "Merab Dvalishvili"
+    },
+    {
+     "rank": 10,
+     "slug": "alex-pereira",
+     "name": "Alex Pereira"
+    },
+    {
+     "rank": 11,
+     "slug": "ciryl-gane",
+     "name": "Ciryl Gane"
+    },
+    {
+     "rank": 12,
+     "slug": "khamzat-chimaev",
+     "name": "Khamzat Chimaev"
+    },
+    {
+     "rank": 13,
+     "slug": "arman-tsarukyan",
+     "name": "Arman Tsarukyan"
+    },
+    {
+     "rank": 14,
+     "slug": "alexandre-pantoja",
+     "name": "Alexandre Pantoja"
+    },
+    {
+     "rank": 15,
+     "slug": "carlos-ulberg",
+     "name": "Carlos Ulberg"
+    }
+   ]
+  },
+  {
+   "div": "Flyweight",
+   "champ": {
+    "slug": "joshua-van",
+    "name": "Joshua Van"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "alexandre-pantoja",
+     "name": "Alexandre Pantoja"
+    },
+    {
+     "rank": 2,
+     "slug": "manel-kape",
+     "name": "Manel Kape"
+    },
+    {
+     "rank": 3,
+     "slug": "brandon-royval",
+     "name": "Brandon Royval"
+    },
+    {
+     "rank": 4,
+     "slug": "tatsuro-taira",
+     "name": "Tatsuro Taira"
+    },
+    {
+     "rank": 5,
+     "slug": "kyoji-horiguchi",
+     "name": "Kyoji Horiguchi"
+    },
+    {
+     "rank": 6,
+     "slug": "loneer-kavanagh",
+     "name": "Lone’er Kavanagh"
+    },
+    {
+     "rank": 7,
+     "slug": "asu-almabayev",
+     "name": "Asu Almabayev"
+    },
+    {
+     "rank": 8,
+     "slug": "brandon-moreno",
+     "name": "Brandon Moreno"
+    },
+    {
+     "rank": 9,
+     "slug": "amir-albazi",
+     "name": "Amir Albazi"
+    },
+    {
+     "rank": 10,
+     "slug": "ramazan-temirov",
+     "name": "Ramazan Temirov"
+    },
+    {
+     "rank": 11,
+     "slug": "tim-elliott",
+     "name": "Tim Elliott"
+    },
+    {
+     "rank": 12,
+     "slug": "steve-erceg",
+     "name": "Steve Erceg"
+    },
+    {
+     "rank": 13,
+     "slug": "su-mudaerji",
+     "name": "Sumudaerji"
+    },
+    {
+     "rank": 14,
+     "slug": "tagir-ulanbekov",
+     "name": "Tagir Ulanbekov"
+    },
+    {
+     "rank": 15,
+     "slug": "alex-perez",
+     "name": "Alex Perez"
+    }
+   ]
+  },
+  {
+   "div": "Bantamweight",
+   "champ": {
+    "slug": "petr-yan",
+    "name": "Petr Yan"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "merab-dvalishvili",
+     "name": "Merab Dvalishvili"
+    },
+    {
+     "rank": 2,
+     "slug": "sean-omalley",
+     "name": "Sean O'Malley"
+    },
+    {
+     "rank": 3,
+     "slug": "song-yadong",
+     "name": "Song Yadong"
+    },
+    {
+     "rank": 4,
+     "slug": "umar-nurmagomedov",
+     "name": "Umar Nurmagomedov"
+    },
+    {
+     "rank": 5,
+     "slug": "mario-bautista",
+     "name": "Mario Bautista"
+    },
+    {
+     "rank": 6,
+     "slug": "cory-sandhagen",
+     "name": "Cory Sandhagen"
+    },
+    {
+     "rank": 7,
+     "slug": "payton-talbott",
+     "name": "Payton Talbott"
+    },
+    {
+     "rank": 8,
+     "slug": "aiemann-zahabi",
+     "name": "Aiemann Zahabi"
+    },
+    {
+     "rank": 9,
+     "slug": "david-martinez",
+     "name": "David Martinez"
+    },
+    {
+     "rank": 10,
+     "slug": "raul-rosas-jr",
+     "name": "Raul Rosas Jr."
+    },
+    {
+     "rank": 11,
+     "slug": "marlon-vera",
+     "name": "Marlon Vera"
+    },
+    {
+     "rank": 12,
+     "slug": "deiveson-figueiredo",
+     "name": "Deiveson Figueiredo"
+    },
+    {
+     "rank": 13,
+     "slug": "farid-basharat",
+     "name": "Farid Basharat"
+    },
+    {
+     "rank": 14,
+     "slug": "marcus-mcghee",
+     "name": "Marcus McGhee"
+    },
+    {
+     "rank": 15,
+     "slug": "raoni-barcelos",
+     "name": "Raoni Barcelos"
+    }
+   ]
+  },
+  {
+   "div": "Featherweight",
+   "champ": {
+    "slug": "alexander-volkanovski",
+    "name": "Alexander Volkanovski"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "movsar-evloev",
+     "name": "Movsar Evloev"
+    },
+    {
+     "rank": 2,
+     "slug": "diego-lopes",
+     "name": "Diego Lopes"
+    },
+    {
+     "rank": 3,
+     "slug": "lerone-murphy",
+     "name": "Lerone Murphy"
+    },
+    {
+     "rank": 4,
+     "slug": "aljamain-sterling",
+     "name": "Aljamain Sterling"
+    },
+    {
+     "rank": 5,
+     "slug": "jean-silva",
+     "name": "Jean Silva"
+    },
+    {
+     "rank": 6,
+     "slug": "yair-rodriguez",
+     "name": "Yair Rodriguez"
+    },
+    {
+     "rank": 7,
+     "slug": "arnold-allen",
+     "name": "Arnold Allen"
+    },
+    {
+     "rank": 8,
+     "slug": "youssef-zalal",
+     "name": "Youssef Zalal"
+    },
+    {
+     "rank": 9,
+     "slug": "kevin-vallejos",
+     "name": "Kevin Vallejos"
+    },
+    {
+     "rank": 10,
+     "slug": "steve-garcia",
+     "name": "Steve Garcia"
+    },
+    {
+     "rank": 11,
+     "slug": "aaron-pico",
+     "name": "Aaron Pico"
+    },
+    {
+     "rank": 12,
+     "slug": "melquizael-costa",
+     "name": "Melquizael Costa"
+    },
+    {
+     "rank": 13,
+     "slug": "brian-ortega",
+     "name": "Brian Ortega"
+    },
+    {
+     "rank": 14,
+     "slug": "patricio-freire",
+     "name": "Patricio Pitbull"
+    },
+    {
+     "rank": 15,
+     "slug": "david-onama",
+     "name": "David Onama"
+    }
+   ]
+  },
+  {
+   "div": "Lightweight",
+   "champ": {
+    "slug": "justin-gaethje",
+    "name": "Justin Gaethje"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "ilia-topuria",
+     "name": "Ilia Topuria"
+    },
+    {
+     "rank": 2,
+     "slug": "arman-tsarukyan",
+     "name": "Arman Tsarukyan"
+    },
+    {
+     "rank": 3,
+     "slug": "charles-oliveira",
+     "name": "Charles Oliveira"
+    },
+    {
+     "rank": 4,
+     "slug": "max-holloway",
+     "name": "Max Holloway"
+    },
+    {
+     "rank": 5,
+     "slug": "paddy-pimblett",
+     "name": "Paddy Pimblett"
+    },
+    {
+     "rank": 6,
+     "slug": "benoit-saint-denis",
+     "name": "Benoît Saint Denis"
+    },
+    {
+     "rank": 7,
+     "slug": "quillan-salkilld",
+     "name": "Quillan Salkilld"
+    },
+    {
+     "rank": 8,
+     "slug": "mauricio-ruffy",
+     "name": "Mauricio Ruffy"
+    },
+    {
+     "rank": 9,
+     "slug": "salahdine-parnasse",
+     "name": "Salahdine Parnasse"
+    },
+    {
+     "rank": 10,
+     "slug": "mateusz-gamrot",
+     "name": "Mateusz Gamrot"
+    },
+    {
+     "rank": 11,
+     "slug": "rafael-fiziev",
+     "name": "Rafael Fiziev"
+    },
+    {
+     "rank": 12,
+     "slug": "renato-moicano",
+     "name": "Renato Moicano"
+    },
+    {
+     "rank": 13,
+     "slug": "dan-hooker",
+     "name": "Dan Hooker"
+    },
+    {
+     "rank": 14,
+     "slug": "tom-nolan",
+     "name": "Tom Nolan"
+    },
+    {
+     "rank": 15,
+     "slug": "beneil-dariush",
+     "name": "Beneil Dariush"
+    }
+   ]
+  },
+  {
+   "div": "Welterweight",
+   "champ": {
+    "slug": "islam-makhachev",
+    "name": "Islam Makhachev"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "ian-machado-garry",
+     "name": "Ian Machado Garry"
+    },
+    {
+     "rank": 2,
+     "slug": "carlos-prates",
+     "name": "Carlos Prates"
+    },
+    {
+     "rank": 3,
+     "slug": "michael-morales",
+     "name": "Michael Morales"
+    },
+    {
+     "rank": 4,
+     "slug": "jack-della-maddalena",
+     "name": "Jack Della Maddalena"
+    },
+    {
+     "rank": 5,
+     "slug": "gabriel-bonfim",
+     "name": "Gabriel Bonfim"
+    },
+    {
+     "rank": 6,
+     "slug": "sean-brady",
+     "name": "Sean Brady"
+    },
+    {
+     "rank": 7,
+     "slug": "belal-muhammad",
+     "name": "Belal Muhammad"
+    },
+    {
+     "rank": 8,
+     "slug": "leon-edwards",
+     "name": "Leon Edwards"
+    },
+    {
+     "rank": 9,
+     "slug": "kamaru-usman",
+     "name": "Kamaru Usman"
+    },
+    {
+     "rank": 10,
+     "slug": "joaquin-buckley",
+     "name": "Joaquin Buckley"
+    },
+    {
+     "rank": 11,
+     "slug": "yaroslav-amosov",
+     "name": "Yaroslav Amosov"
+    },
+    {
+     "rank": 12,
+     "slug": "uros-medic",
+     "name": "Uroš Medić"
+    },
+    {
+     "rank": 13,
+     "slug": "mike-malott",
+     "name": "Mike Malott"
+    },
+    {
+     "rank": 14,
+     "slug": "daniel-rodriguez",
+     "name": "Daniel Rodriguez"
+    },
+    {
+     "rank": 15,
+     "slug": "neil-magny",
+     "name": "Neil Magny"
+    }
+   ]
+  },
+  {
+   "div": "Middleweight",
+   "champ": {
+    "slug": "sean-strickland",
+    "name": "Sean Strickland"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "khamzat-chimaev",
+     "name": "Khamzat Chimaev"
+    },
+    {
+     "rank": 2,
+     "slug": "dricus-du-plessis",
+     "name": "Dricus Du Plessis"
+    },
+    {
+     "rank": 3,
+     "slug": "nassourdine-imavov",
+     "name": "Nassourdine Imavov"
+    },
+    {
+     "rank": 4,
+     "slug": "brendan-allen",
+     "name": "Brendan Allen"
+    },
+    {
+     "rank": 5,
+     "slug": "caio-borralho",
+     "name": "Caio Borralho"
+    },
+    {
+     "rank": 6,
+     "slug": "joe-pyfer",
+     "name": "Joe Pyfer"
+    },
+    {
+     "rank": 7,
+     "slug": "gregory-rodrigues",
+     "name": "Gregory Rodrigues"
+    },
+    {
+     "rank": 8,
+     "slug": "anthony-hernandez",
+     "name": "Anthony Hernandez"
+    },
+    {
+     "rank": 9,
+     "slug": "israel-adesanya",
+     "name": "Israel Adesanya"
+    },
+    {
+     "rank": 10,
+     "slug": "christian-leroy-duncan",
+     "name": "Christian Leroy Duncan"
+    },
+    {
+     "rank": 11,
+     "slug": "jared-cannonier",
+     "name": "Jared Cannonier"
+    },
+    {
+     "rank": 12,
+     "slug": "abus-magomedov",
+     "name": "Abus Magomedov"
+    },
+    {
+     "rank": 13,
+     "slug": "ikram-aliskerov",
+     "name": "Ikram Aliskerov"
+    },
+    {
+     "rank": 14,
+     "slug": "bo-nickal",
+     "name": "Bo Nickal"
+    },
+    {
+     "rank": 15,
+     "slug": "shara-magomedov",
+     "name": "Shara Magomedov"
+    }
+   ]
+  },
+  {
+   "div": "Light Heavyweight",
+   "champ": {
+    "slug": "carlos-ulberg",
+    "name": "Carlos Ulberg"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "magomed-ankalaev",
+     "name": "Magomed Ankalaev"
+    },
+    {
+     "rank": 2,
+     "slug": "jiri-prochazka",
+     "name": "Jiří Procházka"
+    },
+    {
+     "rank": 3,
+     "slug": "alex-pereira",
+     "name": "Alex Pereira"
+    },
+    {
+     "rank": 4,
+     "slug": "khalil-rountree-jr",
+     "name": "Khalil Rountree Jr."
+    },
+    {
+     "rank": 5,
+     "slug": "navajo-stirling",
+     "name": "Navajo Stirling"
+    },
+    {
+     "rank": 6,
+     "slug": "paulo-costa",
+     "name": "Paulo Costa"
+    },
+    {
+     "rank": 7,
+     "slug": "azamat-murzakanov",
+     "name": "Azamat Murzakanov"
+    },
+    {
+     "rank": 8,
+     "slug": "dominick-reyes",
+     "name": "Dominick Reyes"
+    },
+    {
+     "rank": 9,
+     "slug": "jan-blachowicz",
+     "name": "Jan Błachowicz"
+    },
+    {
+     "rank": 10,
+     "slug": "bogdan-guskov",
+     "name": "Bogdan Guskov"
+    },
+    {
+     "rank": 11,
+     "slug": "robert-whittaker",
+     "name": "Robert Whittaker"
+    },
+    {
+     "rank": 12,
+     "slug": "alonzo-menifield",
+     "name": "Alonzo Menifield"
+    },
+    {
+     "rank": 13,
+     "slug": "muhammad-said",
+     "name": "Muhammad Saidov"
+    },
+    {
+     "rank": 14,
+     "slug": "reinier-de-ridder",
+     "name": "Reinier de Ridder"
+    },
+    {
+     "rank": 15,
+     "slug": "nikita-krylov",
+     "name": "Nikita Krylov"
+    }
+   ]
+  },
+  {
+   "div": "Heavyweight",
+   "champ": {
+    "slug": "ciryl-gane",
+    "name": "Ciryl Gane"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "tom-aspinall",
+     "name": "Tom Aspinall"
+    },
+    {
+     "rank": 2,
+     "slug": "alexander-volkov",
+     "name": "Alexander Volkov"
+    },
+    {
+     "rank": 3,
+     "slug": "sergei-pavlovich",
+     "name": "Sergei Pavlovich"
+    },
+    {
+     "rank": 4,
+     "slug": "josh-hokit",
+     "name": "Josh Hokit"
+    },
+    {
+     "rank": 5,
+     "slug": "curtis-blaydes",
+     "name": "Curtis Blaydes"
+    },
+    {
+     "rank": 6,
+     "slug": "waldo-cortes-acosta",
+     "name": "Waldo Cortes Acosta"
+    },
+    {
+     "rank": 7,
+     "slug": "rizvan-kuniev",
+     "name": "Rizvan Kuniev"
+    },
+    {
+     "rank": 8,
+     "slug": "vitor-petrino",
+     "name": "Vitor Petrino"
+    },
+    {
+     "rank": 9,
+     "slug": "serghei-spivac",
+     "name": "Serghei Spivac"
+    },
+    {
+     "rank": 10,
+     "slug": "ante-delija",
+     "name": "Ante Delija"
+    },
+    {
+     "rank": 11,
+     "slug": "valter-walker",
+     "name": "Valter Walker"
+    },
+    {
+     "rank": 12,
+     "slug": "tyrell-fortune",
+     "name": "Tyrell Fortune"
+    },
+    {
+     "rank": 13,
+     "slug": "derrick-lewis",
+     "name": "Derrick Lewis"
+    },
+    {
+     "rank": 14,
+     "slug": "aleksandar-rakic",
+     "name": "Aleksandar Rakić"
+    },
+    {
+     "rank": 15,
+     "slug": "mario-pinto",
+     "name": "Mario Pinto"
+    }
+   ]
+  },
+  {
+   "div": "Women's Pound-for-Pound",
+   "champ": null,
+   "list": [
+    {
+     "rank": 1,
+     "slug": "valentina-shevchenko",
+     "name": "Valentina Shevchenko"
+    },
+    {
+     "rank": 2,
+     "slug": "kayla-harrison",
+     "name": "Kayla Harrison"
+    },
+    {
+     "rank": 3,
+     "slug": "zhang-weili",
+     "name": "Zhang Weili"
+    },
+    {
+     "rank": 4,
+     "slug": "natalia-silva",
+     "name": "Natalia Silva"
+    },
+    {
+     "rank": 5,
+     "slug": "mackenzie-dern",
+     "name": "Mackenzie Dern"
+    },
+    {
+     "rank": 6,
+     "slug": "alexa-grasso",
+     "name": "Alexa Grasso"
+    },
+    {
+     "rank": 7,
+     "slug": "manon-fiorot",
+     "name": "Manon Fiorot"
+    },
+    {
+     "rank": 8,
+     "slug": "erin-blanchfield",
+     "name": "Erin Blanchfield"
+    },
+    {
+     "rank": 9,
+     "slug": "tatiana-suarez",
+     "name": "Tatiana Suarez"
+    },
+    {
+     "rank": 10,
+     "slug": "julianna-pena",
+     "name": "Julianna Peña"
+    },
+    {
+     "rank": 11,
+     "slug": "virna-jandiroba",
+     "name": "Virna Jandiroba"
+    },
+    {
+     "rank": 12,
+     "slug": "rose-namajunas",
+     "name": "Rose Namajunas"
+    },
+    {
+     "rank": 13,
+     "slug": "raquel-pennington",
+     "name": "Raquel Pennington"
+    },
+    {
+     "rank": 14,
+     "slug": "denise-gomes",
+     "name": "Denise Gomes"
+    },
+    {
+     "rank": 15,
+     "slug": "maycee-barber",
+     "name": "Maycee Barber"
+    }
+   ]
+  },
+  {
+   "div": "Women's Strawweight",
+   "champ": {
+    "slug": "mackenzie-dern",
+    "name": "Mackenzie Dern"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "zhang-weili",
+     "name": "Zhang Weili"
+    },
+    {
+     "rank": 2,
+     "slug": "tatiana-suarez",
+     "name": "Tatiana Suarez"
+    },
+    {
+     "rank": 3,
+     "slug": "virna-jandiroba",
+     "name": "Virna Jandiroba"
+    },
+    {
+     "rank": 4,
+     "slug": "denise-gomes",
+     "name": "Denise Gomes"
+    },
+    {
+     "rank": 5,
+     "slug": "gillian-robertson",
+     "name": "Gillian Robertson"
+    },
+    {
+     "rank": 6,
+     "slug": "yan-xiaonan",
+     "name": "Yan Xiaonan"
+    },
+    {
+     "rank": 7,
+     "slug": "fatima-kline",
+     "name": "Fatima Kline"
+    },
+    {
+     "rank": 8,
+     "slug": "loopy-godinez",
+     "name": "Loopy Godinez"
+    },
+    {
+     "rank": 9,
+     "slug": "alexia-thainara",
+     "name": "Alexia Thainara"
+    },
+    {
+     "rank": 10,
+     "slug": "jessica-andrade",
+     "name": "Jéssica Andrade"
+    },
+    {
+     "rank": 11,
+     "slug": "tabatha-ricci",
+     "name": "Tabatha Ricci"
+    },
+    {
+     "rank": 12,
+     "slug": "amanda-lemos",
+     "name": "Amanda Lemos"
+    },
+    {
+     "rank": 13,
+     "slug": "amanda-ribas",
+     "name": "Amanda Ribas"
+    },
+    {
+     "rank": 14,
+     "slug": "angela-hill",
+     "name": "Angela Hill"
+    },
+    {
+     "rank": 15,
+     "slug": "mizuki-inoue",
+     "name": "Mizuki"
+    }
+   ]
+  },
+  {
+   "div": "Women's Flyweight",
+   "champ": {
+    "slug": "natalia-silva",
+    "name": "Natalia Silva"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "valentina-shevchenko",
+     "name": "Valentina Shevchenko"
+    },
+    {
+     "rank": 2,
+     "slug": "alexa-grasso",
+     "name": "Alexa Grasso"
+    },
+    {
+     "rank": 3,
+     "slug": "manon-fiorot",
+     "name": "Manon Fiorot"
+    },
+    {
+     "rank": 4,
+     "slug": "erin-blanchfield",
+     "name": "Erin Blanchfield"
+    },
+    {
+     "rank": 5,
+     "slug": "rose-namajunas",
+     "name": "Rose Namajunas"
+    },
+    {
+     "rank": 6,
+     "slug": "jasmine-jasudavicius",
+     "name": "Jasmine Jasudavicius"
+    },
+    {
+     "rank": 6,
+     "slug": "maycee-barber",
+     "name": "Maycee Barber"
+    },
+    {
+     "rank": 8,
+     "slug": "wang-cong",
+     "name": "Wang Cong"
+    },
+    {
+     "rank": 9,
+     "slug": "tracy-cortez",
+     "name": "Tracy Cortez"
+    },
+    {
+     "rank": 10,
+     "slug": "miranda-maverick",
+     "name": "Miranda Maverick"
+    },
+    {
+     "rank": 11,
+     "slug": "karine-silva",
+     "name": "Karine Silva"
+    },
+    {
+     "rank": 12,
+     "slug": "casey-oneill",
+     "name": "Casey O'Neill"
+    },
+    {
+     "rank": 13,
+     "slug": "eduarda-moura",
+     "name": "Eduarda Moura"
+    },
+    {
+     "rank": 14,
+     "slug": "regina-malpica-rivera",
+     "name": "Regina Tarin"
+    },
+    {
+     "rank": 15,
+     "slug": "gabriella-fernandes",
+     "name": "Gabriella Fernandes"
+    }
+   ]
+  },
+  {
+   "div": "Women's Bantamweight",
+   "champ": {
+    "slug": "kayla-harrison",
+    "name": "Kayla Harrison"
+   },
+   "list": [
+    {
+     "rank": 1,
+     "slug": "julianna-pena",
+     "name": "Julianna Peña"
+    },
+    {
+     "rank": 2,
+     "slug": "joselyne-edwards",
+     "name": "Joselyne Edwards"
+    },
+    {
+     "rank": 3,
+     "slug": "ailin-perez",
+     "name": "Ailin Perez"
+    },
+    {
+     "rank": 4,
+     "slug": "raquel-pennington",
+     "name": "Raquel Pennington"
+    },
+    {
+     "rank": 5,
+     "slug": "norma-dumont",
+     "name": "Norma Dumont"
+    },
+    {
+     "rank": 6,
+     "slug": "yana-santos",
+     "name": "Yana Santos"
+    },
+    {
+     "rank": 7,
+     "slug": "luana-santos",
+     "name": "Luana Santos"
+    },
+    {
+     "rank": 8,
+     "slug": "jacqueline-cavalcanti",
+     "name": "Jacqueline Cavalcanti"
+    },
+    {
+     "rank": 9,
+     "slug": "macy-chiasson",
+     "name": "Macy Chiasson"
+    },
+    {
+     "rank": 10,
+     "slug": "karol-rosa",
+     "name": "Karol Rosa"
+    },
+    {
+     "rank": 11,
+     "slug": "bia-mesquita",
+     "name": "Bia Mesquita"
+    },
+    {
+     "rank": 12,
+     "slug": "michelle-montague",
+     "name": "Michelle Montague"
+    },
+    {
+     "rank": 13,
+     "slug": "nora-cornolle",
+     "name": "Nora Cornolle"
+    },
+    {
+     "rank": 14,
+     "slug": "melissa-croden",
+     "name": "Melissa Croden"
+    },
+    {
+     "rank": 15,
+     "slug": "dariya-zheleznyakova",
+     "name": "Daria Zhelezniakova"
+    }
+   ]
+  }
+ ]
+};
